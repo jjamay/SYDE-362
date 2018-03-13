@@ -1,5 +1,5 @@
 rho = 2810; % kg/m^3
-F_load = 7000;
+F_load = 3500/40;
 E = 71.7 * 10^9;
 
 delta1_fun = @(l, r) (F_load * l^3) / (48 * E * ((pi / 4) * r^4));
@@ -19,10 +19,10 @@ beq = [];
 
 % lower and upper bounds
 lb = [0 0 0];
-ub = [0.0065 0.05 0.05];
+ub = [0.0012 0.04 0.04];
 
 % initial conditions
-x0 = [0.0065 0.05 0.05];
+x0 = [0.0012 0.05 0.05];
 
 optimal_x = fmincon(obj_fun, x0, A, b, Aeq, beq, lb, ub, @nonlinear_constraints);
 optimal_x
